@@ -203,6 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
   for (const projectCarouselImage of projectCarouselImages) {
     projectCarouselImage.addEventListener("click", function () {
       if (!isFormal) {
+        window.location.href = "/project/" + projectCarouselImage.dataset.slug;
         return;
       }
 
