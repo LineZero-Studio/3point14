@@ -327,90 +327,63 @@ function moveProjectCarouselPrev() {
 }
 
 function moveProjectCarouselNext() {
-  const projects = document.getElementsByClassName("collection-item");
+    const projects = document.getElementsByClassName("collection-item");
 
-  const prevProjectCursor = document.getElementById("prevProjectCursor");
-  const nextProjectCursor = document.getElementById("nextProjectCursor");
+    const prevProjectCursor = document.getElementById("prevProjectCursor");
+    const nextProjectCursor = document.getElementById("nextProjectCursor");
 
-  prevProjectCursor.style.opacity = '0';
-  prevProjectCursor.style.transform = "scale(0)";
-  nextProjectCursor.style.opacity = '0';
-  nextProjectCursor.style.transform = "scale(0)";
+    prevProjectCursor.style.opacity = '0';
+    prevProjectCursor.style.transform = "scale(0)";
+    nextProjectCursor.style.opacity = '0';
+    nextProjectCursor.style.transform = "scale(0)";
 
-  const minIndex = numberOfProjects === 3 ? -2 : (numberOfProjects === 4 ? -3 : -5);
-  const maxIndex = numberOfProjects === 3 ? 6 : (numberOfProjects === 4 ? 8 : 9);
+    const minIndex = numberOfProjects === 3 ? -2 : (numberOfProjects === 4 ? -3 : -5);
+    const maxIndex = numberOfProjects === 3 ? 6 : (numberOfProjects === 4 ? 8 : 9);
 
-  if (tempHiddenTimeout !== null) {
-    clearTimeout(tempHiddenTimeout);
-    tempHiddenTimeout = null;
-    if (projects.querySelector(`._${maxIndex}`)) {
-      projects.querySelector("._10").classList.add(`negative${Math.abs(minIndex)}`);
-    } else {
-      projects.querySelector("._10").classList.add(`_${maxIndex}`);
-    }
-    projects.querySelector("._10").classList.remove("_10");
-  }
-
-  setTimeout(() => {
-    for (let i = 0; i < projects.length; i++) {
-      const classNames = projects[i].className.split(' ');
-
-      const classToRemove = classNames.find(className => className.match(/_\d$/) || className.match(/negative\d/));
-
-      const getClassAsNumber = (className) => {
-        if (className.match(/_\d$/)) {
-          return parseInt(className[1]);
+    if (tempHiddenTimeout !== null) {
+        clearTimeout(tempHiddenTimeout);
+        tempHiddenTimeout = null;
+        if (projects.querySelector(`._${maxIndex}`)) {
+            projects.querySelector("._10").classList.add(`negative${Math.abs(minIndex)}`);
+        } else {
+            projects.querySelector("._10").classList.add(`_${maxIndex}`);
         }
-        return 0 - parseInt(className[8]);
-      }
-      console.log(classToRemove);
-      const newNumber = getClassAsNumber(classToRemove) === minIndex ? maxIndex : getClassAsNumber(classToRemove) - 1;
-      const newClass = (newNumber < 0 ? "negative" : "_") + Math.abs(newNumber);
-
-      projects[i].classList.remove(classToRemove);
-      if (newNumber < getClassAsNumber(classToRemove)) {
-        projects[i].classList.add(newClass);
-  const logoList = document.getElementById("logoList");
-  numberOfLogos = logoList.children.length;
-  let logosInitialWidth = logoList.scrollWidth - (window.innerWidth * 0.0206);
-
-  for (let i = 0; i < numberOfLogos; i++) {
-    var cln = logoList.children[i].cloneNode(true);
-    logoList.appendChild(cln);
-  }
-
-  while (logoList.scrollWidth <= window.innerWidth * 2) {
-    for (let i = 0; i < numberOfLogos; i++) {
-      var cln = logoList.children[i].cloneNode(true);
-      logoList.appendChild(cln);
+        projects.querySelector("._10").classList.remove("_10");
     }
-  }
 
-  logoList.style.left = "0px";
+    setTimeout(() => {
+        for (let i = 0; i < projects.length; i++) {
+            const classNames = projects[i].className.split(' ');
 
-  setInterval(() => {
-    const leftNum = parseFloat(logoList.style.left);
-    logoList.style.left = ((leftNum - 1) % (logosInitialWidth)) + "px";
-  }, 10);
+            const classToRemove = classNames.find(className => className.match(/_\d$/) || className.match(/negative\d/));
 
-  window.addEventListener('resize', function () {
-    logosInitialWidth = logoList.scrollWidth - (window.innerWidth * 0.0206);
-  });
+            const getClassAsNumber = (className) => {
+                if (className.match(/_\d$/)) {
+                    return parseInt(className[1]);
+                }
+                return 0 - parseInt(className[8]);
+            }
+            console.log(classToRemove);
+            const newNumber = getClassAsNumber(classToRemove) === minIndex ? maxIndex : getClassAsNumber(classToRemove) - 1;
+            const newClass = (newNumber < 0 ? "negative" : "_") + Math.abs(newNumber);
 
-      } else {
-        projects[i].classList.add("_10");
-        tempHiddenTimeout = setTimeout(() => {
-          projects[i].classList.remove("_10");
-          projects[i].classList.add(newClass);
-          tempHiddenTimeout = null;
-        }, 50);
-      }
-      for (const child of projects[i].children) {
-        child.classList.remove(classToRemove);
-        child.classList.add(newClass);
-      }
-    }
-  }, 0)
+            projects[i].classList.remove(classToRemove);
+            if (newNumber < getClassAsNumber(classToRemove)) {
+                projects[i].classList.add(newClass);
+            } else {
+                projects[i].classList.add("_10");
+                tempHiddenTimeout = setTimeout(() => {
+                    projects[i].classList.remove("_10");
+                    projects[i].classList.add(newClass);
+                    tempHiddenTimeout = null;
+                }, 50);
+            }
+            for (const child of projects[i].children) {
+                child.classList.remove(classToRemove);
+                child.classList.add(newClass);
+            }
+        }
+    }, 0)
 }
 
 const projectPrevBtn = document.getElementById("projectPrevBtn");
