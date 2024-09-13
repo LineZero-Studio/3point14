@@ -1,5 +1,3 @@
-const themeSwitch = document.getElementById("theme-switch");
-
 themeSwitch.addEventListener("click", (e) => {
   const elementsToChange = [...document.getElementsByClassName("swiper-slide")];
   for (const element of elementsToChange) {

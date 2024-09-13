@@ -1,5 +1,3 @@
-const themeSwitch = document.getElementById("theme-switch");
-const menuBtn = document.getElementById("menu-btn");
 let projectAnimationInterval;
 let projectAnimationWaiting = true;
 let numberOfProjects = 0; // Keeps track of unique projects
