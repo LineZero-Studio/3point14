@@ -218,6 +218,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         activateProjectAnimationInterval();
       }
+      if (projectCarouselImage.classList.contains("_2")) {
+        window.location.href = "/project/" + projectCarouselImage.dataset.slug;
+      }
       if (projectCarouselImage.classList.contains("_3")) {
         moveProjectCarouselNext();
         setTimeout(() => {
