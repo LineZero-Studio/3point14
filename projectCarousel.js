@@ -1,7 +1,6 @@
 let projectAnimationInterval;
 let projectAnimationWaiting = true;
 let numberOfProjects = 0; // Keeps track of unique projects
-let numberOfLogos = 0; // Keeps track of unique logos
 let activeTrackAddClassFunction = null;
 let isFormal = false;
 let buttonsDebounced = false;
