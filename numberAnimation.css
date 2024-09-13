@@ -1,0 +1,15 @@
+.number-span:not(.shifted-down) {
+    transition-property: filter, color, background-color, width, height, transform, border-color, top, left, bottom, opacity, font-size, -webkit-text-stroke-color;
+    transition-duration: 2s;
+    transition-timing-function: cubic-bezier(0.13, 0.37, 0.06, 0.99);
+}
+
+.number-span {
+    position: relative;
+    top: 0vw;
+}
+
+.shifted-down {
+    margin-top: 22.48vw;
+    top: 22.48vw;
+}
