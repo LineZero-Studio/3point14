@@ -526,7 +526,6 @@ function dragCarousel(elmnt) {
 
     function touchStart(e) {
         e = e || window.event;
-        e.preventDefault();
 
         startTime = Date.now();
 
