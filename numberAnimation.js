@@ -15,6 +15,7 @@ function wrapCharactersInSpan(element) {
 
 const targetElement = document.querySelector('.hero-numbers');
 wrapCharactersInSpan(targetElement);
+targetElement.style.display = "block";
 
 function removeShiftedDownClass() {
     const elements = Array.from(document.querySelectorAll('.shifted-down'));
