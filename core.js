@@ -45,8 +45,6 @@ menuBtn.addEventListener("click", (e) => {
             toggleClassRecursively(child, className, childIndex);
         });
     }
-    const navbarWrapper = document.getElementById("navbar-wrapper");
     const navbar = document.getElementById("navbar");
-    toggleClassRecursively(navbarWrapper, "open", 0);
     toggleClassRecursively(navbar, "open", 0);
 });
