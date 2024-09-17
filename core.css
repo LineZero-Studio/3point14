@@ -13,8 +13,9 @@ html {
     transition-timing-function: cubic-bezier(0.13, 0.37, 0.06, 0.99);
 }
 
-.navbar-wrapper {
+.navbar-wrapper, .navbar-background {
     transition-duration: 1s !important;
+    clip-path: content-box;
 }
 
 .mobile-menu-links {
