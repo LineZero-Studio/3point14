@@ -48,3 +48,14 @@ menuBtn.addEventListener("click", (e) => {
     const navbar = document.getElementById("navbar-wrapper");
     toggleClassRecursively(navbar, "open", 0);
 });
+
+function updateFullHeightInVW() {
+    const viewportHeight = window.innerHeight;
+    const viewportWidth = window.innerWidth;
+    const vhInVW = (viewportHeight / viewportWidth) * 100;
+    document.documentElement.style.setProperty('--fullheightinvw', `${vhInVW}vw`);
+}
+
+updateFullHeightInVW();
+
+window.addEventListener('resize', updateFullHeightInVW);
