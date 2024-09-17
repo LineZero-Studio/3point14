@@ -132,13 +132,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const moveBy = img.dataset.moveBy;
 
             if (moveBy > 0) {
-                for (let j = 0; j < moveBy; j++) {
-                    moveProjectCarouselNext();
-                }
+                    moveProjectCarouselNext(moveBy);
             } else {
-                for (let j = 0; j < Math.abs(moveBy); j++) {
-                    moveProjectCarouselPrev();
-                }
+                    moveProjectCarouselPrev(Math.abs(moveBy));
             }
 
             setTimeout(() => {
