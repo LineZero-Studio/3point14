@@ -52,4 +52,4 @@ window.addEventListener('resize', () => {
 
 // Usage example
 const galleryCarousel = document.getElementById('galleryCarousel'); // Replace with your element ID
-logChildOffsets(galleryCarousel);
+updateChildOffsets(galleryCarousel);
