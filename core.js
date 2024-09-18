@@ -1,5 +1,6 @@
 const themeSwitch = document.getElementById("theme-switch");
 const menuBtn = document.getElementById("menu-btn");
+const servicesMobileLink = document.getElementById("servicesMobileLink");
 
 themeSwitch.addEventListener("click", (e) => {
     const themeSwitchKnob = document.getElementById("theme-switch-knob");
@@ -28,7 +29,7 @@ menuBtn.addEventListener("click", (e) => {
                 element.classList.toggle(className);
             }, element.classList.contains("open") ? 500 - (i * 125) : 500 + i * 125);
         } else {
-            if (element.classList.contains("open")) {
+            if (element.classList.contains("open") && !element.classList.contains("menu-button-line")) {
                 setTimeout(() => {
                     element.classList.toggle(className);
                 }, 1000);
@@ -47,6 +48,35 @@ menuBtn.addEventListener("click", (e) => {
     }
     const navbar = document.getElementById("navbar-wrapper");
     toggleClassRecursively(navbar, "open", 0);
+});
+
+servicesMobileLink.addEventListener("click", (e) => {
+    document.getElementsByTagName("html")[0].classList.remove("stop-scrolling");
+    function removeClassRecursively(element, className, i) {
+        if (element.classList.contains("mobile-nav-link")) {
+            setTimeout(() => {
+                element.classList.remove(className);
+            }, 500 - (i * 125));
+        } else {
+            if (!element.classList.contains("menu-button-line")) {
+                setTimeout(() => {
+                    element.classList.remove(className);
+                }, 1000);
+            } else {
+                element.classList.remove(className);
+            }
+        }
+
+        let childIndex = 0;
+
+        // Recursively toggle the class on all child elements
+        Array.from(element.children).forEach(child => {
+            childIndex++;
+            removeClassRecursively(child, className, childIndex);
+        });
+    }
+    const navbar = document.getElementById("navbar-wrapper");
+    removeClassRecursively(navbar, "open", 0);
 });
 
 function updateFullHeightInVW() {
