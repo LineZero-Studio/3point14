@@ -28,6 +28,8 @@ function updateChildOffsets(element) {
             galleryOffsets.push(childRect.left);
         }
     }
+
+    galleryOffsets.push(rightOffset + currentOffset);
 }
 
 function galleryPrev(element) {
