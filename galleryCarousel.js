@@ -34,12 +34,12 @@ function updateChildOffsets(element) {
 
 function galleryPrev(element) {
     galleryIndex = galleryIndex + galleryOffsets.length - 1 % galleryOffsets.length;
-    element.style.transform = `translateX(${galleryOffsets[galleryIndex]}px);`;
+    element.style.transform = `translateX(${galleryOffsets[galleryIndex]}px)`;
 }
 
 function galleryNext(element) {
     galleryIndex = galleryIndex + 1 % galleryOffsets.length;
-    element.style.transform = `translateX(${galleryOffsets[galleryIndex]}px);`;
+    element.style.transform = `translateX(${galleryOffsets[galleryIndex]}px)`;
 }
 
 themeSwitch.addEventListener("click", (e) => {
