@@ -40,8 +40,6 @@ function galleryNext(element) {
     element.style.transform = `translateX(${galleryOffsets[galleryIndex]}px);`;
 }
 
-const themeSwitch = document.getElementById("theme-switch");
-
 themeSwitch.addEventListener("click", (e) => {
     setTimeout(() => {
         updateChildOffsets(galleryCarousel);
