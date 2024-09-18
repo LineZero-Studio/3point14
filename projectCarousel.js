@@ -262,8 +262,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
-    dragCarousel(document.getElementById("projectList"));
 });
 
 function moveProjectCarouselPrev(moveBy) {
