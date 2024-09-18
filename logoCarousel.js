@@ -11,7 +11,7 @@ function logoSplide() {
             direction: 'ltr',
             gap: '3vw',
             speed: 600, // transition speed in miliseconds
-            drag: 'free',
+            drag: false,
             autoWidth: true, // for cards with differing widths
             type: 'loop',
             autoScroll: {
