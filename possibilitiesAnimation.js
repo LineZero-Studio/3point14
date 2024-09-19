@@ -3,12 +3,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const words = ["possibilities", "collaborations", "industries", "innovations", "synergy"];
     const className = 'expanded';
 
+    const cycleTime = 3000;
+
     setInterval(() => {
         for (const element of document.getElementsByClassName(currentWord)) {
-            element.classList.toggle(className);
+            if (element.classList.contains(className)) {
+                setTimeout(() => {
+                    element.classList.toggle(className);
+                }, (cycleLength / 2) - 600);
+            } else {
+                element.classList.toggle(className);
+            }
             if (!element.classList.contains(className)) {
                 currentWord = words[(words.indexOf(currentWord) + 1 === words.length ? 0 : words.indexOf(currentWord) + 1)]
             }
         }
-    }, 2000);
+    }, cycleLength / 2);
 });
