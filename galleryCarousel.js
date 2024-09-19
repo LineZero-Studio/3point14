@@ -9,7 +9,7 @@ function getChildOffsets(element) {
     const children = element.children;
 
     if (children.length === 0) return [];
-    if (element.scrollWidth < window.innerWidth) return [];
+    if (element.scrollWidth <= window.innerWidth) return [];
 
     let offsets = [];
 
@@ -80,10 +80,12 @@ themeSwitch.addEventListener("click", (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const galleryCarousel = document.getElementById('galleryCarousel');
+    const galleryControls = document.getElementById('galleryControls');
     const galleryProgress = document.getElementById('galleryProgress');
     const galleryPrevBtn = document.getElementById('galleryPrev');
     const galleryNextBtn = document.getElementById('galleryNext');
     const progressCarousel = document.getElementById('progressCarousel');
+    const progressControls = document.getElementById('progressControls');
     const progressProgress = document.getElementById('progressProgress');
     const progressPrevBtn = document.getElementById('progressPrev');
     const progressNextBtn = document.getElementById('progressNext');
@@ -102,8 +104,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     updateChildOffsets();
+    if (galleryOffsets.length === 0) {
+        galleryControls.style.display = 'none';
+    }
+    if (progressOffsets.length === 0) {
+        progressControls.style.display = 'none';
+    }
 
     window.addEventListener('resize', () => {
         updateChildOffsets();
+        if (galleryOffsets.length === 0) {
+            galleryControls.style.display = 'none';
+        }
+        if (progressOffsets.length === 0) {
+            progressControls.style.display = 'none';
+        }
     });
 });
