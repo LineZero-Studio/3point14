@@ -104,7 +104,7 @@ if (window.innerWidth >= 992) {
     });
 
     const vw = window.innerWidth / 100;
-    const containerHeight = 70 * vw;
+    const containerHeight = 80 * vw;
     const containerWidth = 66.75 * vw;
     const borderWidth = 4.65 * vw;
     const engine = Matter.Engine.create();
