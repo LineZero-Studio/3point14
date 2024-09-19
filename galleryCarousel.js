@@ -1,14 +1,17 @@
 let galleryOffsets = [];
 let galleryIndex = 0;
+let progressOffsets = [];
+let progressIndex = [];
 
-function updateChildOffsets(element) {
-    galleryOffsets = [];
+function getChildOffsets(element) {
+    if (!element) return [];
+
     const children = element.children;
-    
-    if (children.length === 0) {
-        console.log("No children to check.");
-        return;
-    }
+
+    if (children.length === 0) return [];
+    if (element.scrollWidth < window.innerWidth) return [];
+
+    let offsets = [];
 
     const lastChild = children[children.length - 1];
     const lastChildRect = lastChild.getBoundingClientRect();
@@ -22,24 +25,49 @@ function updateChildOffsets(element) {
     for (let i = 0; i < children.length; i++) {
         const child = children[i];
         const childRect = child.getBoundingClientRect();
-        
+
         // Check if the left offset of the child is less than the right offset
         if (childRect.left - currentOffset < rightOffset) {
-            galleryOffsets.push(childRect.left);
+            offsets.push(childRect.left);
         }
     }
 
-    galleryOffsets.push(rightOffset + currentOffset);
+    offsets.push(rightOffset + currentOffset);
+
+    return offsets;
 }
 
-function galleryPrev(element) {
-    galleryIndex = (galleryIndex + galleryOffsets.length - 1) % galleryOffsets.length;
-    element.style.transform = `translateX(-${galleryOffsets[galleryIndex]}px)`;
+function updateChildOffsets() {
+    galleryOffsets = getChildOffsets(galleryCarousel);
+    progressOffsets = getChildOffsets(progressCarousel);
 }
 
-function galleryNext(element) {
-    galleryIndex = (galleryIndex + 1) % galleryOffsets.length;
-    element.style.transform = `translateX(-${galleryOffsets[galleryIndex]}px)`;
+function galleryPrev(element, progressElement) {
+    if (element.id === "galleryCarousel") {
+        const offsets = galleryOffsets;
+        galleryIndex = (galleryIndex + offsets.length - 1) % offsets.length;
+        const index = galleryIndex;
+    } else {
+        const offsets = progressOffsets;
+        progressIndex = (progressIndex + offsets.length - 1) % offsets.length;
+        const index = progressIndex;
+    }
+    element.style.transform = `translateX(-${offsets[index]}px)`;
+    progressElement.style.width = ((index + 1) / offsets.length) + "%";
+}
+
+function galleryNext(element, progressElement) {
+    if (element.id === "galleryCarousel") {
+        const offsets = galleryOffsets;
+        galleryIndex = (galleryIndex + 1) % offsets.length;
+        const index = galleryIndex;
+    } else {
+        const offsets = progressOffsets;
+        progressIndex = (progressIndex + 1) % offsets.length;
+        const index = progressIndex;
+    }
+    element.style.transform = `translateX(-${offsets[index]}px)`;
+    progressElement.style.width = ((index + 1) / offsets.length) + "%";
 }
 
 themeSwitch.addEventListener("click", (e) => {
@@ -49,10 +77,31 @@ themeSwitch.addEventListener("click", (e) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const galleryCarousel = document.getElementById('galleryCarousel'); // Replace with your element ID
-    updateChildOffsets(galleryCarousel);
+    const galleryCarousel = document.getElementById('galleryCarousel');
+    const galleryProgress = document.getElementById('galleryProgress');
+    const galleryPrevBtn = document.getElementById('galleryPrev');
+    const galleryNextBtn = document.getElementById('galleryNext');
+    const progressCarousel = document.getElementById('progressCarousel');
+    const progressProgress = document.getElementById('progressProgress');
+    const progressPrevBtn = document.getElementById('progressPrev');
+    const progressNextBtn = document.getElementById('progressNext');
+
+    galleryPrevBtn.addEventListener('click', () => {
+        galleryPrev(galleryCarousel, galleryProgress);
+    });
+    galleryNextBtn.addEventListener('click', () => {
+        galleryNext(galleryCarousel, galleryProgress);
+    });
+    progressPrevBtn.addEventListener('click', () => {
+        galleryPrev(progressCarousel, progressProgress);
+    });
+    progressPrevBtn.addEventListener('click', () => {
+        galleryPrev(progressCarousel, progressProgress);
+    });
+
+    updateChildOffsets();
 
     window.addEventListener('resize', () => {
-        updateChildOffsets(galleryCarousel);
+        updateChildOffsets();
     });
 });
