@@ -43,31 +43,33 @@ function updateChildOffsets() {
 }
 
 function galleryPrev(element, progressElement) {
+    let offsets, index;
     if (element.id === "galleryCarousel") {
-        const offsets = galleryOffsets;
+        offsets = galleryOffsets;
         galleryIndex = (galleryIndex + offsets.length - 1) % offsets.length;
-        const index = galleryIndex;
+        index = galleryIndex;
     } else {
-        const offsets = progressOffsets;
+        offsets = progressOffsets;
         progressIndex = (progressIndex + offsets.length - 1) % offsets.length;
-        const index = progressIndex;
+        index = progressIndex;
     }
     element.style.transform = `translateX(-${offsets[index]}px)`;
-    progressElement.style.width = ((index + 1) / offsets.length) + "%";
+    progressElement.style.width = ((index + 1) / offsets.length * 100) + "%";
 }
 
 function galleryNext(element, progressElement) {
+    let offsets, index;
     if (element.id === "galleryCarousel") {
-        const offsets = galleryOffsets;
+        offsets = galleryOffsets;
         galleryIndex = (galleryIndex + 1) % offsets.length;
-        const index = galleryIndex;
+        index = galleryIndex;
     } else {
-        const offsets = progressOffsets;
+        offsets = progressOffsets;
         progressIndex = (progressIndex + 1) % offsets.length;
-        const index = progressIndex;
+        index = progressIndex;
     }
     element.style.transform = `translateX(-${offsets[index]}px)`;
-    progressElement.style.width = ((index + 1) / offsets.length) + "%";
+    progressElement.style.width = ((index + 1) / offsets.length * 100) + "%";
 }
 
 themeSwitch.addEventListener("click", (e) => {
@@ -95,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     progressPrevBtn.addEventListener('click', () => {
         galleryPrev(progressCarousel, progressProgress);
     });
-    progressPrevBtn.addEventListener('click', () => {
+    progressBtn.addEventListener('click', () => {
         galleryPrev(progressCarousel, progressProgress);
     });
 
