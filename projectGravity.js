@@ -92,6 +92,9 @@ if (window.innerWidth >= 992) {
             box.body.isStatic = !box.body.isStatic
             if (box.body.isStatic) {
                 box.elem.style.transitionDuration = '0.5s'
+                setTimeout(() => {
+                    box.elem.style.transitionDuration = '0s'
+                }, 500);
                 box.elem.style.transitionProperty = 'top, left, transform';
                 box.snap()
             } else {
