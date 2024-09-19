@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     progressPrevBtn.addEventListener('click', () => {
         galleryPrev(progressCarousel, progressProgress);
     });
-    progressBtn.addEventListener('click', () => {
+    progressNextBtn.addEventListener('click', () => {
         galleryPrev(progressCarousel, progressProgress);
     });
 
