@@ -10,12 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (element.classList.contains(className)) {
                 setTimeout(() => {
                     element.classList.toggle(className);
+                    currentWord = words[(words.indexOf(currentWord) + 1 === words.length ? 0 : words.indexOf(currentWord) + 1)]
                 }, (cycleTime / 2) - 600);
             } else {
                 element.classList.toggle(className);
-            }
-            if (!element.classList.contains(className)) {
-                currentWord = words[(words.indexOf(currentWord) + 1 === words.length ? 0 : words.indexOf(currentWord) + 1)]
             }
         }
     }, cycleTime / 2);
