@@ -107,7 +107,7 @@ if (window.innerWidth >= 992) {
     const engine = Matter.Engine.create();
     engine.gravity.y = -0.1;
 
-    const topOffset = 232.2 * vw;
+    const topOffset = 242.2 * vw;
     const leftOffset = 3.5 * vw;
     const gap = 7 * vw;
 
