@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (element.classList.contains(className)) {
                 setTimeout(() => {
                     element.classList.toggle(className);
-                }, (cycleLength / 2) - 600);
+                }, (cycleTime / 2) - 600);
             } else {
                 element.classList.toggle(className);
             }
@@ -18,5 +18,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentWord = words[(words.indexOf(currentWord) + 1 === words.length ? 0 : words.indexOf(currentWord) + 1)]
             }
         }
-    }, cycleLength / 2);
+    }, cycleTime / 2);
 });
