@@ -2,7 +2,59 @@ const themeSwitch = document.getElementById("theme-switch");
 const menuBtn = document.getElementById("menu-btn");
 const servicesMobileLink = document.getElementById("servicesMobileLink");
 
+function setCookie(cookie, cookieVal, expiry) {
+  var d = new Date();
+  d.setTime(d.getTime() + (expiry * 24 * 60 * 60 * 1000));
+  var expires = "expires=" + d.toUTCString();
+  document.cookie = cookieName + "=" + cookieVal + ";" + expires + ";path=/";
+}
+
+function getCookie(cookieName) {
+  var name = cookieName + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+  var sitemode = getCookie("sitemode");
+  if (sitemode != 0) {
+    if (sitemode == "formal") {
+        const themeSwitchKnob = document.getElementById("theme-switch-knob");
+        const elementsToChange = [...document.getElementsByClassName("receives-formal"), ...document.getElementsByClassName("swiper-slide")];
+        const contactBtn = document.getElementById("contactBtn");
+        const planningBtn = document.getElementById("planningBtn");
+        themeSwitch.classList.toggle("active");
+        themeSwitchKnob.classList.toggle("active");
+        for (const element of elementsToChange) {
+            element.classList.toggle("formal");
+        }
+        if (contactBtn) {
+            contactBtn.innerText = contactBtn.innerText === "Get the convo started" ? "Get in touch" : "Get the convo started"
+        }
+        if (planningBtn) {
+            planningBtn.innerText = planningBtn.innerText === "Ask us how we do it" ? "Contact us" : "Ask us how we do it"
+        }
+    }
+  }
+}
+
 themeSwitch.addEventListener("click", (e) => {
+    const cookie = getCookie("sitemode");
+    if (cookie === "raw") {
+        setCookie("sitemode", "formal", 365);
+    } else {
+        setCookie("sitemode", "raw", 365);
+    }
     const themeSwitchKnob = document.getElementById("theme-switch-knob");
     const elementsToChange = [...document.getElementsByClassName("receives-formal"), ...document.getElementsByClassName("swiper-slide")];
     const contactBtn = document.getElementById("contactBtn");
