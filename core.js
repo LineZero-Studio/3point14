@@ -48,6 +48,8 @@ function checkCookie() {
   }
 }
 
+document.addEventListener("DOMContentLoaded", checkCookie);
+
 themeSwitch.addEventListener("click", (e) => {
     const cookie = getCookie("sitemode");
     if (cookie === "raw") {
