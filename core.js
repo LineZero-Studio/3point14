@@ -2,7 +2,7 @@ const themeSwitch = document.getElementById("theme-switch");
 const menuBtn = document.getElementById("menu-btn");
 const servicesMobileLink = document.getElementById("servicesMobileLink");
 
-function setCookie(cookie, cookieVal, expiry) {
+function setCookie(cookieName, cookieVal, expiry) {
   var d = new Date();
   d.setTime(d.getTime() + (expiry * 24 * 60 * 60 * 1000));
   var expires = "expires=" + d.toUTCString();
