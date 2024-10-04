@@ -28,8 +28,10 @@ function getCookie(cookieName) {
 function checkCookie() {
   var sitemode = getCookie("sitemode");
   const elementsToChange = [...document.getElementsByClassName("receives-formal"), ...document.getElementsByClassName("swiper-slide")];
-  if (element.classList.contains("receives-formal")) {
-      element.classList.add("loaded");
+  for (const element of elementsToChange) {
+    if (element.classList.contains("receives-formal")) {
+        element.classList.add("loaded");
+    }
   }
   if (sitemode != 0) {
     if (sitemode == "formal") {
