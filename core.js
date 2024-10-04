@@ -37,6 +37,9 @@ function checkCookie() {
         themeSwitchKnob.classList.toggle("active");
         for (const element of elementsToChange) {
             element.classList.toggle("formal");
+            if (element.classList.contains("receives-formal")) {
+                element.classList.add("loaded");
+            }
         }
         if (contactBtn) {
             contactBtn.innerText = contactBtn.innerText === "Get the convo started" ? "Get in touch" : "Get the convo started"
@@ -65,9 +68,6 @@ themeSwitch.addEventListener("click", (e) => {
     themeSwitchKnob.classList.toggle("active");
     for (const element of elementsToChange) {
         element.classList.toggle("formal");
-        if (element.classList.contains("receives-formal")) {
-            element.classList.add("loaded");
-        }
     }
     if (contactBtn) {
         contactBtn.innerText = contactBtn.innerText === "Get the convo started" ? "Get in touch" : "Get the convo started"
