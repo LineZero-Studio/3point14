@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     currentWord = words[(words.indexOf(currentWord) + 1 === words.length ? 0 : words.indexOf(currentWord) + 1)]
                 }, (cycleTime / 2) - 600);
             } else {
+                for (const element of words.map(word => document.getElementsByClassName(word)[0])) {
+                    element.classList.remove(className);
+                }
                 element.classList.toggle(className);
             }
         }
