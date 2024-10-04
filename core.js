@@ -27,19 +27,19 @@ function getCookie(cookieName) {
 
 function checkCookie() {
   var sitemode = getCookie("sitemode");
+  const elementsToChange = [...document.getElementsByClassName("receives-formal"), ...document.getElementsByClassName("swiper-slide")];
+  if (element.classList.contains("receives-formal")) {
+      element.classList.add("loaded");
+  }
   if (sitemode != 0) {
     if (sitemode == "formal") {
         const themeSwitchKnob = document.getElementById("theme-switch-knob");
-        const elementsToChange = [...document.getElementsByClassName("receives-formal"), ...document.getElementsByClassName("swiper-slide")];
         const contactBtn = document.getElementById("contactBtn");
         const planningBtn = document.getElementById("planningBtn");
         themeSwitch.classList.toggle("active");
         themeSwitchKnob.classList.toggle("active");
         for (const element of elementsToChange) {
             element.classList.toggle("formal");
-            if (element.classList.contains("receives-formal")) {
-                element.classList.add("loaded");
-            }
         }
         if (contactBtn) {
             contactBtn.innerText = contactBtn.innerText === "Get the convo started" ? "Get in touch" : "Get the convo started"
