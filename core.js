@@ -34,7 +34,7 @@ function checkCookie() {
             element.classList.add("loaded");
         }
     } 
-    }, 0);
+    }, 250);
     if (sitemode != 0) {
         if (sitemode == "formal") {
             const themeSwitchKnob = document.getElementById("theme-switch-knob");
