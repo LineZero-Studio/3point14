@@ -160,15 +160,27 @@ document.addEventListener('DOMContentLoaded', function() {
         animationTimerContainer.appendChild(outerDiv);
     }
 
+    function addClassToAllFormalReceivingChildren(node, className) {
+        if (node && node.nodeType === Node.ELEMENT_NODE) {
+            if (node.classList.contains("receives-formal")) {
+                node.classList.add(className);
+            }
+
+            node.childNodes.forEach(child => {
+                addClassToAllChildren(child, className);
+            });
+        }
+    }
+
     for (let i = 0; i < numberOfProjects; i++) {
         var cln = projects[i].cloneNode(true);
-        cln.classList.add("loaded");
+        addClassToAllFormalReceivingChildren(cln, "loaded");
         projectList.appendChild(cln);
     }
 
     for (let i = 0; i < numberOfProjects; i++) {
         var cln = projects[i].cloneNode(true);
-        cln.classList.add("loaded");
+        addClassToAllFormalReceivingChildren(cln, "loaded");
         projectList.appendChild(cln);
     }
 
