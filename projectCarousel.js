@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             node.childNodes.forEach(child => {
-                addClassToAllChildren(child, className);
+                addClassToAllFormalReceivingChildren(child, className);
             });
         }
     }
