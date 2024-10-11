@@ -132,9 +132,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const moveBy = img.dataset.moveBy;
 
             if (moveBy > 0) {
-                    moveProjectCarouselNext(moveBy);
+                moveProjectCarouselNext(moveBy);
             } else {
-                    moveProjectCarouselPrev(Math.abs(moveBy));
+                moveProjectCarouselPrev(Math.abs(moveBy));
             }
 
             setTimeout(() => {
@@ -162,11 +162,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     for (let i = 0; i < numberOfProjects; i++) {
         var cln = projects[i].cloneNode(true);
+        cln.classList.add("loaded");
         projectList.appendChild(cln);
     }
 
     for (let i = 0; i < numberOfProjects; i++) {
         var cln = projects[i].cloneNode(true);
+        cln.classList.add("loaded");
         projectList.appendChild(cln);
     }
 
