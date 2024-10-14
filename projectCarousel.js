@@ -276,6 +276,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    const sitemode = getCookie("sitemode");
+    if (sitemode === "formal") {
+        isFormal = true;
+        determineActiveProject();
+
+        activateProjectAnimationInterval();
+    }
 });
 
 function moveProjectCarouselPrev(moveBy) {
