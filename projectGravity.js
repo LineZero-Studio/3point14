@@ -12,6 +12,23 @@ if (window.innerWidth >= 992) {
         })
     });
 
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const sitemode = getCookie("sitemode");
+        if (sitemode === "formal") {
+            textblocks.forEach(box => {
+                box.body.isStatic = !box.body.isStatic
+                if (box.body.isStatic) {
+                    box.elem.style.transitionDuration = '0.5s'
+                    box.elem.style.transitionProperty = 'top, left, transform';
+                    box.snap()
+                } else {
+                    box.elem.style.transitionDuration = '0s'
+                }
+            })
+        }
+    });
+
     const vw = window.innerWidth / 100;
     const containerHeight = 26 * vw;
     const containerWidth = 30.37 * vw;
@@ -104,6 +121,26 @@ if (window.innerWidth >= 992) {
         })
     });
 
+    document.addEventListener("DOMContentLoaded", function() {
+        const sitemode = getCookie("sitemode");
+        if (sitemode === "formal") {
+            textblocks.forEach(box => {
+                box.body.isStatic = !box.body.isStatic
+                if (box.body.isStatic) {
+                    box.elem.style.transitionDuration = '0.5s'
+                    setTimeout(() => {
+                        box.elem.style.transitionDuration = '0s'
+                    }, 500);
+                    box.elem.style.transitionProperty = 'top, left, transform';
+                    box.snapNoScroll()
+                } else {
+                    box.snap()
+                    box.elem.style.transitionDuration = '0s'
+                }
+            })
+        }
+    });
+
     const vw = window.innerWidth / 100;
     const containerHeight = 80 * vw;
     const containerWidth = 66.75 * vw;
@@ -173,27 +210,6 @@ if (window.innerWidth >= 992) {
         Matter.Composite.add(engine.world, [rect.body]);
     });
 
-    /*
-Matter.Composite.add(engine.world, [
-Matter.Bodies.rectangle(containerWidth / 2 + leftOffset, borderWidth / 2 + topOffset, containerWidth, borderWidth, { isStatic: true }),
-Matter.Bodies.rectangle(containerWidth / 2 + leftOffset, containerHeight - (borderWidth / 2) + topOffset, containerWidth, borderWidth, { isStatic: true }),
-Matter.Bodies.rectangle(borderWidth / 2 + leftOffset, containerHeight / 2 + topOffset, borderWidth, containerHeight, { isStatic: true }),
-Matter.Bodies.rectangle(containerWidth - borderWidth / 2 + leftOffset, containerWidth / 2 + topOffset, borderWidth, containerHeight, { isStatic: true })
-]);
-Matter.Composite.add(engine.world, [
-Matter.Bodies.rectangle(containerWidth + gap + containerWidth / 2 + leftOffset, borderWidth / 2 + topOffset, containerWidth, borderWidth, { isStatic: true }),
-Matter.Bodies.rectangle(containerWidth + gap + containerWidth / 2 + leftOffset, containerHeight - (borderWidth / 2) + topOffset, containerWidth, borderWidth, { isStatic: true }),
-Matter.Bodies.rectangle(containerWidth + gap + borderWidth / 2 + leftOffset, containerHeight / 2 + topOffset, borderWidth, containerHeight, { isStatic: true }),
-Matter.Bodies.rectangle(containerWidth + gap + containerWidth - borderWidth / 2 + leftOffset, containerWidth / 2 + topOffset, borderWidth, containerHeight, { isStatic: true })
-]);
-Matter.Composite.add(engine.world, [
-Matter.Bodies.rectangle((containerWidth + gap) * 2 + containerWidth / 2 + leftOffset, borderWidth / 2 + topOffset, containerWidth, borderWidth, { isStatic: true }),
-Matter.Bodies.rectangle((containerWidth + gap) * 2 + containerWidth / 2 + leftOffset, containerHeight - (borderWidth / 2) + topOffset, containerWidth, borderWidth, { isStatic: true }),
-Matter.Bodies.rectangle((containerWidth + gap) * 2 + borderWidth / 2 + leftOffset, containerHeight / 2 + topOffset, borderWidth, containerHeight, { isStatic: true }),
-Matter.Bodies.rectangle((containerWidth + gap) * 2 + containerWidth - borderWidth / 2 + leftOffset, containerWidth / 2 + topOffset, borderWidth, containerHeight, { isStatic: true })
-]);
-    */
-
     const textblocks = [];
 
     document.querySelectorAll(".textblock").forEach((element, i) => {
@@ -207,7 +223,7 @@ Matter.Bodies.rectangle((containerWidth + gap) * 2 + containerWidth - borderWidt
     (function rerender() {
         textblocks.forEach(tb => tb.render());
         rectangles.forEach((rect, i) => {
-            Matter.Body.setPosition(rect.body, {x: rectangleDefs[i].x - wrapper.scrollLeft, y: rectangleDefs[i].y});
+            Matter.Body.setPosition(rect.body, { x: rectangleDefs[i].x - wrapper.scrollLeft, y: rectangleDefs[i].y });
         })
         Matter.Engine.update(engine);
         requestAnimationFrame(rerender);
