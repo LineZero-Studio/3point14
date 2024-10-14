@@ -5,7 +5,7 @@ const gallerySwiperElement = document.getElementById("gallerySwiper");
 
 var gallerySwiper = new Swiper(gallerySwiperElement, {
     slidesPerView: "auto",
-    spaceBetween: 30,
+    spaceBetween: 10,
     loop: true,
     navigation: {
         nextEl: ".gallery-swiper-next",
