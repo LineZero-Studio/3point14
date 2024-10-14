@@ -3,5 +3,5 @@
 }
 
 .swiper-slide {
-  	transition: margin 2s cubic-bezier(0.13, 0.37, 0.06, 0.99);
+  	transition: margin 2s cubic-bezier(0.13, 0.37, 0.06, 0.99) !important;
 }
