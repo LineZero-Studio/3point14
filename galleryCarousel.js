@@ -5,7 +5,6 @@ const gallerySwiperElement = document.getElementById("gallerySwiper");
 
 var gallerySwiper = new Swiper(gallerySwiperElement, {
     slidesPerView: "auto",
-    spaceBetween: 10,
     loop: true,
     navigation: {
         nextEl: ".gallery-swiper-next",
@@ -25,7 +24,6 @@ const progressSwiperElement = document.getElementById("progressSwiper");
 
 var progressSwiper = new Swiper(progressSwiperElement, {
     slidesPerView: "auto",
-    spaceBetween: 10,
     loop: true,
     navigation: {
         nextEl: ".progress-swiper-next",
@@ -39,12 +37,4 @@ progressSwiper.on('slideChange', function() {
         current = 1;
     const progressProgress = document.getElementById("progressProgress");
     progressProgress.style.width = (current / totalProgressSlide * 100) + "%";
-});
-
-
-themeSwitch.addEventListener("click", function() {
-    gallerySwiper.params.spaceBetween = (gallerySwiper.params.spaceBetween == 50) ? 10 : 50;
-    gallerySwiper.update(true);
-    progressSwiper.params.spaceBetween = (progressSwiper.params.spaceBetween == 50) ? 10 : 50;
-    progressSwiper.update(true);
 });
