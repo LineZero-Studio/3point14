@@ -1,7 +1,7 @@
 themeSwitch.addEventListener("click", (e) => {
   const elementsToChange = [...document.getElementsByClassName("swiper-slide")];
   for (const element of elementsToChange) {
-    element.classList.toggle("formal");
+//    element.classList.toggle("formal");
   }
 });
 
