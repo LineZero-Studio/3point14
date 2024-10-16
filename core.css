@@ -7,7 +7,9 @@ html {
     overflow: hidden;
 }
 
-.receives-formal, .navbar-wrapper, .nav-copyright {
+.receives-formal,
+.navbar-wrapper,
+.nav-copyright {
     transition-property: filter, color, background-color, width, height, transform, border-color, top, left, bottom, opacity, font-size, -webkit-text-stroke-color;
     transition-duration: 2s;
     transition-timing-function: cubic-bezier(0.13, 0.37, 0.06, 0.99);
@@ -17,11 +19,49 @@ html {
     transition-duration: 0s !important;
 }
 
-.navbar-wrapper, .navbar-background {
+.navbar-wrapper,
+.navbar-background {
     transition-duration: 1s !important;
     clip-path: content-box;
 }
 
 .mobile-menu-links {
     transition-duration: 1s !important;
+}
+
+.desktop-nav-link-first-text,
+.desktop-nav-link-second-text {
+    transition: top 0.3s;
+}
+
+.desktop-nav-link:hover>.desktop-nav-link-first-text {
+    top: -1.8vw;
+}
+
+.desktop-nav-link:hover>.desktop-nav-link-second-text {
+    top: 0vw;
+}
+
+.button:hover {
+    background-color: var(--3white);
+}
+
+.button:hover>div {
+    color: var(--3black);
+}
+
+.button-text-4.formal>.button:hover {
+    background-color: var(--3black);
+}
+
+.button-text-4.formal>.button:hover>div {
+    color: var(--3white);
+}
+
+.button {
+    transition: background-color 0.3s;
+}
+
+.button>div {
+    transition: color 0.3s;
 }

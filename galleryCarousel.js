@@ -13,8 +13,8 @@ var gallerySwiper = new Swiper(gallerySwiperElement, {
 });
 
 gallerySwiper.on('slideChange', function() {
-    var current = gallerySwiper.realIndex + 1;
-    if (current > totalGallerySlide)
+    var current = gallerySwiper.realIndex;
+    if (current >= totalGallerySlide)
         current = 1;
     const galleryProgress = document.getElementById("galleryProgress");
     galleryProgress.style.width = (current / totalGallerySlide * 100) + "%";
