@@ -1,5 +1,5 @@
 function fetchAPIData() {
-    fetch('http://ec2-3-22-119-47.us-east-2.compute.amazonaws.com:3000/clientFeed?clientName=3point14', {
+    fetch('https://api.linezerostudio.com/clientFeed?clientName=3point14', {
         mode: 'cors',
         headers: {
             'Access-Control-Allow-Origin': '*'
