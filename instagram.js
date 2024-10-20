@@ -33,6 +33,7 @@ function fetchAPIData() {
 
             var socialSwiper = new Swiper(".social-swiper", {
                 grabCursor: true,
+                centeredSlides: true,
                 slidesPerView: "auto",
                 loop: true,
             });
