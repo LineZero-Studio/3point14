@@ -17,10 +17,16 @@ function fetchAPIData() {
             for (const post of data.data) {
                 const newDiv = document.createElement('div');
                 newDiv.classList.add('swiper-slide');
+
+                const linkElement = document.createElement('a');
+                linkElement.href = post.permalink;
+                linkElement.setAttribute("target", "_blank");
+
                 const img = document.createElement('img');
                 img.src = post.media_url;
 
-                newDiv.appendChild(img);
+                linkElement.appendChild(img);
+                newDiv.appendChild(linkElement);
                 wrapper.appendChild(newDiv);
             }
 
