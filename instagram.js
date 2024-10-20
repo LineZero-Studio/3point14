@@ -17,6 +17,7 @@ function fetchAPIData() {
             for (const post of data.data) {
                 const newDiv = document.createElement('div');
                 newDiv.classList.add('swiper-slide');
+                newDiv.classList.add('social-swiper-slide');
 
                 const linkElement = document.createElement('a');
                 linkElement.href = post.permalink;
