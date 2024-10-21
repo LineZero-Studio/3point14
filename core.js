@@ -27,7 +27,7 @@ function getCookie(cookieName) {
 
 function checkCookie() {
     var sitemode = getCookie("sitemode");
-    const elementsToChange = [...document.getElementsByClassName("receives-formal"), ...document.getElementsByClassName("swiper-slide")];
+    const elementsToChange = [...document.getElementsByClassName("receives-formal")];
     setTimeout(() => {
     for (const element of elementsToChange) {
         if (element.classList.contains("receives-formal")) {
