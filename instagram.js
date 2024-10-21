@@ -19,6 +19,7 @@ function fetchAPIData() {
                 newDiv.classList.add('swiper-slide');
                 newDiv.classList.add('social-swiper-slide');
                 newDiv.classList.add('receives-formal');
+                newDiv.classList.add('loaded');
 
                 const linkElement = document.createElement('a');
                 linkElement.href = post.permalink;
