@@ -18,12 +18,15 @@ function fetchAPIData() {
                 const newDiv = document.createElement('div');
                 newDiv.classList.add('swiper-slide');
                 newDiv.classList.add('social-swiper-slide');
+                newDiv.classList.add('receives-formal');
 
                 const linkElement = document.createElement('a');
                 linkElement.href = post.permalink;
                 linkElement.setAttribute("target", "_blank");
 
                 const img = document.createElement('img');
+                img.classList.add("social-swiper-image");
+                img.classList.add("receives-formal");
                 img.src = post.media_url;
 
                 linkElement.appendChild(img);
