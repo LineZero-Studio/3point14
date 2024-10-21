@@ -30,6 +30,11 @@ function fetchAPIData() {
                 img.classList.add("receives-formal");
                 img.src = post.media_url;
 
+                if (sitemode === "formal") {
+                    newDiv.classList.add("formal");
+                    img.classList.add("formal");
+                }
+
                 linkElement.appendChild(img);
                 newDiv.appendChild(linkElement);
                 wrapper.appendChild(newDiv);
