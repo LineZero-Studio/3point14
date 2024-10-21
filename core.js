@@ -65,7 +65,7 @@ themeSwitch.addEventListener("click", (e) => {
         setCookie("sitemode", "raw", 365);
     }
     const themeSwitchKnob = document.getElementById("theme-switch-knob");
-    const elementsToChange = [...document.getElementsByClassName("receives-formal"), ...document.getElementsByClassName("swiper-slide")];
+    const elementsToChange = [...document.getElementsByClassName("receives-formal")];
     const contactBtn = document.getElementById("contactBtn");
     const planningBtn = document.getElementById("planningBtn");
     themeSwitch.classList.toggle("active");
