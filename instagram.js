@@ -48,6 +48,12 @@ function fetchAPIData() {
                 navigation: {
                     nextEl: ".social-swiper-next",
                     prevEl: ".social-swiper-previous",
+                }, 
+                on: {
+                    // Fix not loading last image
+                    slideChange: () => {
+                        this.swiper.lazy.loadInSlide(this.swiper.params.slidesPerView + this.swiper.realIndex);
+                    }
                 }
             });
 
