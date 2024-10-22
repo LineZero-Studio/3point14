@@ -45,6 +45,10 @@ function fetchAPIData() {
                 centeredSlides: true,
                 slidesPerView: "auto",
                 loop: true,
+                navigation: {
+                    nextEl: ".social-swiper-next",
+                    prevEl: ".social-swiper-previous",
+                }
             });
 
         })
