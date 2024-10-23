@@ -29,11 +29,11 @@ function checkCookie() {
     var sitemode = getCookie("sitemode");
     const elementsToChange = [...document.getElementsByClassName("receives-formal")];
     setTimeout(() => {
-    for (const element of elementsToChange) {
-        if (element.classList.contains("receives-formal")) {
-            element.classList.add("loaded");
+        for (const element of elementsToChange) {
+            if (element.classList.contains("receives-formal")) {
+                element.classList.add("loaded");
+            }
         }
-    } 
     }, 0);
     if (sitemode != 0) {
         if (sitemode == "formal") {
@@ -52,7 +52,9 @@ function checkCookie() {
                 planningBtn.innerText = planningBtn.innerText === "Ask us how we do it" ? "Contact us" : "Ask us how we do it"
             }
         }
-        document.getElementById("introScreen").style.display = "none";
+    } else {
+        document.getElementById("introScreen").style.display = "block";
+        document.getElementsByTagName("html")[0].classList.add("stop-scrolling");
     }
 }
 
