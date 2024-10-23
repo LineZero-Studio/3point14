@@ -21,7 +21,7 @@ html {
 
 .navbar-wrapper,
 .navbar-background {
-    transition-duration: 1s !important;
+    transition-duration: 0.75s !important;
     clip-path: content-box;
 }
 

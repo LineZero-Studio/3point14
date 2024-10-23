@@ -54,7 +54,9 @@ function checkCookie() {
         }
     } else {
         document.getElementById("introScreen").style.display = "block";
-        document.getElementsByTagName("html")[0].classList.add("stop-scrolling");
+        if (window.location.pathname.includes("home")) {
+            document.getElementsByTagName("html")[0].classList.add("stop-scrolling");
+        }
     }
 }
 
@@ -83,7 +85,7 @@ themeSwitch.addEventListener("click", (e) => {
         planningBtn.innerText = planningBtn.innerText === "Ask us how we do it" ? "Contact us" : "Ask us how we do it"
     }
 });
-/*
+
 menuBtn.addEventListener("click", (e) => {
     document.getElementsByTagName("html")[0].classList.toggle("stop-scrolling");
     function toggleClassRecursively(element, className, i) {
@@ -91,12 +93,12 @@ menuBtn.addEventListener("click", (e) => {
         if (element.classList.contains("mobile-nav-link")) {
             setTimeout(() => {
                 element.classList.toggle(className);
-            }, element.classList.contains("open") ? 500 - (i * 125) : 500 + i * 125);
+            }, element.classList.contains("open") ? 350 - (i * 87) : 350 + i * 87);
         } else {
             if (element.classList.contains("open") && !element.classList.contains("menu-button-line")) {
                 setTimeout(() => {
                     element.classList.toggle(className);
-                }, 1000);
+                }, 300);
             } else {
                 element.classList.toggle(className);
             }
@@ -113,7 +115,7 @@ menuBtn.addEventListener("click", (e) => {
     const navbar = document.getElementById("navbar-wrapper");
     toggleClassRecursively(navbar, "open", 0);
 });
-*/
+
 servicesMobileLink.addEventListener("click", (e) => {
     document.getElementsByTagName("html")[0].classList.remove("stop-scrolling");
     function removeClassRecursively(element, className, i) {
