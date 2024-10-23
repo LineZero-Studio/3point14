@@ -45,7 +45,7 @@ function fetchAPIData() {
                 centeredSlides: true,
                 slidesPerView: "auto",
                 loop: true,
-                noSwiping: window.innerWidth > 990,
+                allowTouchMove: window.innerWidth < 991,
                 navigation: {
                     nextEl: ".social-swiper-next",
                     prevEl: ".social-swiper-previous",
