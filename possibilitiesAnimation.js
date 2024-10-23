@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const words = ["possibilities", "collaborations", "industries", "innovations", "synergy"];
     const className = 'expanded';
 
-    const cycleTime = 2100;
+    const cycleTime = 2500;
 
     setInterval(() => {
         for (const element of document.getElementsByClassName(currentWord)) {

@@ -52,6 +52,8 @@ function checkCookie() {
                 planningBtn.innerText = planningBtn.innerText === "Ask us how we do it" ? "Contact us" : "Ask us how we do it"
             }
         }
+    } else {
+        document.getElementById("introScreen").style.display = "none";
     }
 }
 
