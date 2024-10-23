@@ -53,8 +53,8 @@ function checkCookie() {
             }
         }
     } else {
-        document.getElementById("introScreen").style.display = "block";
         if (window.location.pathname.includes("home")) {
+            document.getElementById("introScreen").style.display = "block";
             document.getElementsByTagName("html")[0].classList.add("stop-scrolling");
         }
     }
